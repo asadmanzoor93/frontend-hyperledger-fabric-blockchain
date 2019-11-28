@@ -1,16 +1,9 @@
-# React Boilerplate
+# Ethereum Blockchain
 
-A central component and entry point of react services
+Frontend Implementation of Ethereum Blockchain
 
-### Dashboard
-
-![dashboard](https://user-images.githubusercontent.com/17013371/66033714-43760400-e521-11e9-89d0-ad6fa6fcfa93.png)
 
 ### Supported By:
-
-#### Charts.js
-
-![3W72119s5BjWMGm4Xa2MvD5AT2bJsSA8F9WeC71v1s1fKfGkK9mMKuc3LcvF4KigbWg9UsrpEPFze2C61y2sxAxtKmWJVNFubdYCPzN1CwoEK6sdi5ZQQN](https://user-images.githubusercontent.com/17013371/66027651-cc3a7300-e514-11e9-80b9-9a0a111dc3cc.png)
 
 #### ESlint
 
