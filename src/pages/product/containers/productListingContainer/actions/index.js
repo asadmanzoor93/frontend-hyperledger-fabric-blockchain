@@ -19,10 +19,14 @@ function fetchProducts() {
         );
       })
       .catch((error) => {
-        if (error.response) {
+        dispatch({
+          type: productConstants.FETCH_FAILURE,
+          payload: error
+        });
+        if (error.message) {
           store.addNotification({
-            title: 'There was an error fetching products listing!',
-            message: error.response,
+            title: 'There is an error fetching products listing!',
+            message: error.message,
             type: 'danger',
             insert: 'top',
             container: 'top-right',

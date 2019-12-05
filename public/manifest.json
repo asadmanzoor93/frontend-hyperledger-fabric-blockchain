@@ -8,12 +8,12 @@
       "type": "image/x-icon"
     },
     {
-      "src": "edly_logo_icon.png",
+      "src": "ethereum_icon.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "edly_logo.png",
+      "src": "site_logo.png",
       "type": "image/png",
       "sizes": "512x512"
     }

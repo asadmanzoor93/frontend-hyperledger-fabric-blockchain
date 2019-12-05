@@ -1,0 +1,7 @@
+{
+  "BASE_URL": "https://d17d4015.ngrok.io/",
+  "API_ENDPOINTS": {
+    "FETCH_PRODUCTS": "list-products/",
+    "STORE_PRODUCTS": "store-product/"
+  }
+}
