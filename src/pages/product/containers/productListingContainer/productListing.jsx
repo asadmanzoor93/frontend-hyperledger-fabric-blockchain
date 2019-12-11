@@ -39,12 +39,24 @@ const ProductListingContainer = (props) => {
             </div>
             <div className="mainflip backside">
               <div className="card">
-                <div className="card-body text-center mt-4">
+                <div className="card-body text-center">
                   <p>
                     <img className=" img-fluid" src={product.Record.image} alt="product" />
                   </p>
                   <h4 className="card-title">{product.name}</h4>
                   <p className="card-text">{product.Record.description}</p>
+                  <p className="card-text">
+                    <strong>Color</strong>: {product.Record.color}
+                    <br />
+                    <strong>Product Type</strong>: {product.Record.docType}
+                    <br />
+                    <strong>Make</strong>: {product.Record.make}
+                    <br />
+                    <strong>Price</strong>: {product.Record.price}
+                    <br />
+                    <strong>Quantity</strong>: {product.Record.quantity}
+                    <br />
+                  </p>
                   <Link
                     to="/update_product"
                     onClick={() =>

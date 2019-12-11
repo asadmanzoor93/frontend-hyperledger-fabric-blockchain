@@ -4,6 +4,8 @@ import { Col, Form } from 'react-bootstrap';
 import '../../index.scss';
 
 import { updateProductActions } from './actions';
+import { updateProductConstants } from './constants';
+import { Link } from 'react-router-dom';
 
 class UpdateProductContainer extends Component {
   constructor(props) {
@@ -183,6 +185,10 @@ class UpdateProductContainer extends Component {
                 <label>&nbsp;</label>
                 <Col sm="9">
                   <input type="submit" value="Update" className="btn btn-primary btn-lg" />
+                  &nbsp;&nbsp;
+                  <Link class="btn btn-primary btn-lg" to="/">
+                    Cancel
+                  </Link>
                 </Col>
               </Form.Group>
             </form>
