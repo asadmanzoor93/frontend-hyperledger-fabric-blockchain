@@ -1,7 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import '../../index.scss';
-import DefaultCar from '../../../../assets/images/default_car.jpeg';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import * as Icons from '@fortawesome/free-solid-svg-icons';
+import { NavLink, Link } from 'react-router-dom';
+
+import { updateProductConstants } from '../../../updateProduct/containers/updateProductContainer/constants';
 
 const ProductListingContainer = (props) => {
   const { products_listing } = props;
@@ -14,11 +18,7 @@ const ProductListingContainer = (props) => {
               <div className="card">
                 <div className="card-body text-center">
                   <p>
-                    <img
-                      className=" img-fluid"
-                      src={product.Record.image}
-                      alt="product"
-                    />
+                    <img className=" img-fluid" src={product.Record.image} alt="product" />
                   </p>
                   <h4 className="card-title">{product.name}</h4>
                   <p className="card-text">{product.Record.description}</p>
@@ -41,14 +41,22 @@ const ProductListingContainer = (props) => {
               <div className="card">
                 <div className="card-body text-center mt-4">
                   <p>
-                    <img
-                      className=" img-fluid"
-                      src={product.Record.image}
-                      alt="product"
-                    />
+                    <img className=" img-fluid" src={product.Record.image} alt="product" />
                   </p>
                   <h4 className="card-title">{product.name}</h4>
                   <p className="card-text">{product.Record.description}</p>
+                  <Link
+                    to="/update_product"
+                    onClick={() =>
+                      props.dispatch({
+                        type: updateProductConstants.EDIT_PRODUCT,
+                        id: product.Record.ID,
+                        product: product
+                      })
+                    }
+                  >
+                    Edit
+                  </Link>
                 </div>
               </div>
             </div>
@@ -60,6 +68,10 @@ const ProductListingContainer = (props) => {
 
   return (
     <div>
+      <NavLink to="/add_product" activeClassName="active">
+        <FontAwesomeIcon icon={Icons.faAddressBook} style={{ width: '18px', marginRight: '7px' }} />
+        <span>Add Product</span>
+      </NavLink>
       <section id="team" className="pb-5">
         <div className="container">
           <h5 className="section-title h1">OUR Products</h5>

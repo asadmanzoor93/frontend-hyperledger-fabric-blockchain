@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { AddProductContainer } from './containers/addProductContainer/addProduct';
+import { UpdateProductContainer } from './containers/updateProductContainer/updateProduct';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as Icons from '@fortawesome/free-solid-svg-icons';
 import { NavLink } from 'react-router-dom';
 
-const AddProduct = () => {
+const UpdateProduct = () => {
   return (
     <div>
       <NavLink to="/products" activeClassName="active">
@@ -14,12 +14,12 @@ const AddProduct = () => {
       </NavLink>
       <section id="team" className="pb-5">
         <div className="container">
-          <h5 className="section-title h1">Add New Product</h5>
-          <AddProductContainer />
+          <h5 className="section-title h1">Update Product</h5>
+          <UpdateProductContainer />
         </div>
       </section>
     </div>
   );
 };
 
-export default AddProduct;
+export default UpdateProduct;

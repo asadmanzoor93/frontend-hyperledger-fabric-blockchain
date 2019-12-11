@@ -3,23 +3,23 @@ import { connect } from 'react-redux';
 import { Col, Form } from 'react-bootstrap';
 import '../../index.scss';
 
-import { addProductActions } from './actions';
+import { updateProductActions } from './actions';
 
-class AddProductContainer extends Component {
+class UpdateProductContainer extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      id: this.props.max_id,
-      name: this.props.name,
-      description: this.props.description,
-      image: this.props.image,
-      color: this.props.color,
-      docType: this.props.docType,
-      quantity: this.props.quantity,
-      make: this.props.make,
-      owner: this.props.owner,
-      price: this.props.price
+      id: 'params.productId',
+      name: props.name,
+      description: props.description,
+      image: props.image,
+      color: props.color,
+      docType: props.docType,
+      quantity: props.quantity,
+      make: props.make,
+      owner: props.owner,
+      price: props.price
     };
   }
 
@@ -28,10 +28,10 @@ class AddProductContainer extends Component {
     this.setState({ [name]: value });
   };
 
-  addProduct = (e) => {
+  updateProduct = (e) => {
     e.preventDefault();
     if (this.state) {
-      this.props.dispatch(addProductActions.addProduct(this.state));
+      this.props.dispatch(updateProductActions.updateProduct(this.state));
     }
   };
 
@@ -56,11 +56,13 @@ class AddProductContainer extends Component {
   };
 
   render() {
+    const { match } = this.props;
     return (
       <Col md={12}>
+        <h1>{match}</h1>
         <div className="tabs" id="accountSettings">
           <div className="tab-content">
-            <form name="accounts_settings" onSubmit={this.addProduct} className="profile-form">
+            <form name="accounts_settings" onSubmit={this.updateProduct} className="profile-form">
               <Form.Group controlId="name">
                 <label>Name</label>
                 <Col sm="9">
@@ -180,7 +182,7 @@ class AddProductContainer extends Component {
               <Form.Group controlId="submit" sm="md-auto">
                 <label>&nbsp;</label>
                 <Col sm="9">
-                  <input type="submit" value="Save" className="btn btn-primary btn-lg" />
+                  <input type="submit" value="Update" className="btn btn-primary btn-lg" />
                 </Col>
               </Form.Group>
             </form>
@@ -196,9 +198,7 @@ class AddProductContainer extends Component {
 }
 
 function mapStateToProps(state) {
-  const { id, name, description, image, color, docType, make, owner, price, quantity } = state.ADD_PRODUCT;
-
-  const { max_id } = state.PRODUCTS;
+  const { id, name, description, image, color, docType, make, owner, price, quantity } = state.UPDATE_PRODUCT;
 
   return {
     id,
@@ -210,10 +210,9 @@ function mapStateToProps(state) {
     make,
     owner,
     price,
-    max_id,
     quantity
   };
 }
 
-const addProduct = connect(mapStateToProps)(AddProductContainer);
-export { addProduct as AddProductContainer };
+const updateProduct = connect(mapStateToProps)(UpdateProductContainer);
+export { updateProduct as UpdateProductContainer };

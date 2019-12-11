@@ -8,7 +8,8 @@ export const productService = {
   updateProduct
 };
 function fetchProducts() {
-  const url = config.BASE_URL + config.API_ENDPOINTS.FETCH_PRODUCTS;
+  // const url = config.BASE_URL + config.API_ENDPOINTS.FETCH_PRODUCTS;
+  const url = 'http://5ddf59224a658b0014c48899.mockapi.io/products';
   const requestOptions = {
     method: 'GET',
     headers: {
@@ -21,17 +22,7 @@ function fetchProducts() {
 
 function addProduct(product) {
   const url = config.BASE_URL + config.API_ENDPOINTS.STORE_PRODUCTS;
-  const {
-    id,
-    name,
-    description,
-    image,
-    color,
-    docType,
-    make,
-    price,
-    quantity
-  } = product;
+  const { id, name, description, image, color, docType, make, price, quantity } = product;
 
   let bodyFormData = new FormData();
   bodyFormData.set('id', id);
