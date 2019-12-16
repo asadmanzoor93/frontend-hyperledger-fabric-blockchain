@@ -183,7 +183,7 @@ class AddProductContainer extends Component {
                 <Col sm="9">
                   <input type="submit" value="Save" className="btn btn-primary btn-lg" />
                   &nbsp;&nbsp;
-                  <Link class="btn btn-primary btn-lg" to="/">
+                  <Link className="btn btn-primary btn-lg" to="/">
                     Cancel
                   </Link>
                 </Col>

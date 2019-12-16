@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Col, Form } from 'react-bootstrap';
-import '../../index.scss';
-
-import { updateProductActions } from './actions';
-import { updateProductConstants } from './constants';
 import { Link } from 'react-router-dom';
+import { Col, Form } from 'react-bootstrap';
+
+import '../../index.scss';
+import { updateProductActions } from './actions';
 
 class UpdateProductContainer extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      id: 'params.productId',
+      id: props.id,
       name: props.name,
       description: props.description,
       image: props.image,
@@ -186,7 +185,7 @@ class UpdateProductContainer extends Component {
                 <Col sm="9">
                   <input type="submit" value="Update" className="btn btn-primary btn-lg" />
                   &nbsp;&nbsp;
-                  <Link class="btn btn-primary btn-lg" to="/">
+                  <Link className="btn btn-primary btn-lg" to="/">
                     Cancel
                   </Link>
                 </Col>

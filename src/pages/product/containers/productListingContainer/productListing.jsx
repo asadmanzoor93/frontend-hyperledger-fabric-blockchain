@@ -59,6 +59,7 @@ const ProductListingContainer = (props) => {
                   </p>
                   <Link
                     to="/update_product"
+                    className="btn btn-success btn-lg"
                     onClick={() =>
                       props.dispatch({
                         type: updateProductConstants.EDIT_PRODUCT,
@@ -68,6 +69,19 @@ const ProductListingContainer = (props) => {
                     }
                   >
                     Edit
+                  </Link>
+                  <Link
+                    to="/review_product"
+                    className="btn btn-success btn-lg"
+                    onClick={() =>
+                      props.dispatch({
+                        type: updateProductConstants.REVIEW_PRODUCT,
+                        id: product.Record.ID,
+                        product: product
+                      })
+                    }
+                  >
+                    Review Product
                   </Link>
                 </div>
               </div>
