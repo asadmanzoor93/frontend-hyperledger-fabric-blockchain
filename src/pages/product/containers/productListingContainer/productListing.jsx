@@ -75,7 +75,7 @@ const ProductListingContainer = (props) => {
                     className="btn btn-success btn-lg"
                     onClick={() =>
                       props.dispatch({
-                        type: updateProductConstants.REVIEW_PRODUCT,
+                        type: updateProductConstants.EDIT_PRODUCT,
                         id: product.Record.ID,
                         product: product
                       })

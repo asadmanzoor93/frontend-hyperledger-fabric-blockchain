@@ -1,9 +1,9 @@
 import { reviewProductConstants } from '../constants';
 
 const initialState = {
+  id: '',
   user_id: '',
-  product_id: '',
-  description: ''
+  review_detail: ''
 };
 
 export function reviewProduct(state = initialState, action) {
@@ -14,13 +14,11 @@ export function reviewProduct(state = initialState, action) {
         ...action.payload
       };
     case reviewProductConstants.ADD_REVIEW:
-      let product = action.product;
-
       return {
         ...state,
-        id: product.Record.ID ? product.Record.ID : '',
-        name: product.Record.name ? product.Record.name : '',
-        description: product.Record.description ? product.Record.description : ''
+        id: action.payload.ID ? action.payload.ID : '',
+        user_id: action.payload.user_id ? action.payload.user_id : '',
+        review_detail: action.payload.review_detail ? action.payload.review_detail : ''
       };
     default:
       return state;

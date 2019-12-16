@@ -11,9 +11,9 @@ class ReviewProductContainer extends Component {
     super(props);
 
     this.state = {
+      id: props.id,
       user_id: props.user_id,
-      product_id: props.product_id,
-      description: props.description
+      review_detail: props.review_detail
     };
   }
 
@@ -37,34 +37,49 @@ class ReviewProductContainer extends Component {
         <div className="tabs" id="accountSettings">
           <div className="tab-content">
             <form name="accounts_settings" onSubmit={this.reviewProduct} className="profile-form">
-              <Form.Group controlId="name">
-                <label>Product</label>
+              <Form.Group controlId="user_id">
+                <label>User</label>
                 <Col sm="9">
                   <input
                     type="text"
-                    id="product_id"
-                    name="product_id"
+                    id="user_id"
+                    name="user_id"
                     className="form-control"
-                    value={this.state.product_id}
+                    value={this.state.user_id}
                     onChange={this.handleChange}
                     required
                   />
                 </Col>
               </Form.Group>
 
-              <Form.Group controlId="description">
-                <label>Description</label>
+              <Form.Group controlId="id">
+                <label>Product</label>
+                <Col sm="9">
+                  <input
+                    type="text"
+                    id="id"
+                    name="id"
+                    className="form-control"
+                    value={this.state.id}
+                    onChange={this.handleChange}
+                    required
+                  />
+                </Col>
+              </Form.Group>
+
+              <Form.Group controlId="review_detail">
+                <label>Review</label>
                 <Col sm="9">
                   <textarea
                     rows="4"
                     cols="50"
-                    name="description"
+                    name="review_detail"
                     className="form-control"
-                    value={this.state.description}
+                    value={this.state.review_detail}
                     onChange={this.handleChange}
                     required
                   >
-                    {this.state.description}
+                    {this.state.review_detail}
                   </textarea>
                 </Col>
               </Form.Group>
@@ -72,7 +87,7 @@ class ReviewProductContainer extends Component {
               <Form.Group controlId="submit" sm="md-auto">
                 <label>&nbsp;</label>
                 <Col sm="9">
-                  <input type="submit" value="Update" className="btn btn-primary btn-lg" />
+                  <input type="submit" value="Save" className="btn btn-primary btn-lg" />
                   &nbsp;&nbsp;
                   <Link class="btn btn-primary btn-lg" to="/">
                     Cancel
@@ -92,12 +107,13 @@ class ReviewProductContainer extends Component {
 }
 
 function mapStateToProps(state) {
-  const { user_id, product_id, description } = state.REVIEW_PRODUCT;
+  const { id } = state.UPDATE_PRODUCT;
+  const { user_id, review_detail } = state.REVIEW_PRODUCT;
 
   return {
+    id,
     user_id,
-    product_id,
-    description
+    review_detail
   };
 }
 
