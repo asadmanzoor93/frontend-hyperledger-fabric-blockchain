@@ -6,9 +6,10 @@ import * as Icons from '@fortawesome/free-solid-svg-icons';
 import { NavLink, Link } from 'react-router-dom';
 
 import { updateProductConstants } from '../../../updateProduct/containers/updateProductContainer/constants';
+import { productActions } from './actions';
 
 const ProductListingContainer = (props) => {
-  const { products_listing } = props;
+  const { products_listing, user_id } = props;
   const products = products_listing.map((product, index) => {
     return (
       <div key={index} className="col-xs-12 col-sm-6 col-md-4">
@@ -40,23 +41,25 @@ const ProductListingContainer = (props) => {
             <div className="mainflip backside">
               <div className="card">
                 <div className="card-body text-center">
-                  <p>
-                    <img className=" img-fluid" src={product.Record.image} alt="product" />
-                  </p>
-                  <h4 className="card-title">{product.name}</h4>
-                  <p className="card-text">{product.Record.description}</p>
-                  <p className="card-text">
-                    <strong>Color</strong>: {product.Record.color}
-                    <br />
-                    <strong>Product Type</strong>: {product.Record.docType}
-                    <br />
-                    <strong>Make</strong>: {product.Record.make}
-                    <br />
-                    <strong>Price</strong>: {product.Record.price}
-                    <br />
-                    <strong>Quantity</strong>: {product.Record.quantity}
-                    <br />
-                  </p>
+                  <Link
+                    to="/review_product"
+                    className="btn btn-success btn-lg"
+                    onClick={() =>
+                      props.dispatch({
+                        type: updateProductConstants.EDIT_PRODUCT,
+                        id: product.Record.ID,
+                        product: product
+                      })
+                    }
+                  >
+                    Review
+                  </Link>
+                  <span
+                    className="btn btn-success btn-lg"
+                    onClick={() => props.dispatch(productActions.purchaseProduct(product.Record.ID, user_id))}
+                  >
+                    Purchase
+                  </span>
                   <Link
                     to="/update_product"
                     className="btn btn-success btn-lg"
@@ -70,23 +73,17 @@ const ProductListingContainer = (props) => {
                   >
                     Edit
                   </Link>
-                  <Link
-                    to="/review_product"
-                    className="btn btn-success btn-lg"
-                    onClick={() =>
-                      props.dispatch({
-                        type: updateProductConstants.EDIT_PRODUCT,
-                        id: product.Record.ID,
-                        product: product
-                      })
-                    }
-                  >
-                    Review Product
-                  </Link>
+                  <p>
+                    <img className=" img-fluid" src={product.Record.image} alt="product" />
+                  </p>
+                  <h4 className="card-title">{product.name}</h4>
+                  <p className="card-text">{product.Record.description}</p>
                 </div>
               </div>
             </div>
           </div>
+          <br />
+          <br />
         </div>
       </div>
     );
@@ -109,8 +106,10 @@ const ProductListingContainer = (props) => {
 };
 
 function mapStateToProps(state) {
+  const { user_id } = state.USER;
   const { products_listing } = state.PRODUCTS;
   return {
+    user_id,
     products_listing
   };
 }

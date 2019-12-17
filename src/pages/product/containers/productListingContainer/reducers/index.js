@@ -5,6 +5,14 @@ const initialState = {
   products_listing: []
 };
 
+const initialUserState = {
+  user_id: 'ASAD12',
+  name: 'Asad Manzoor',
+  credit: 2000,
+  purchased_product: [],
+  product_reviews: []
+};
+
 export function productsFetch(state = initialState, action) {
   switch (action.type) {
     case productConstants.FETCH_SUCCESS:
@@ -23,6 +31,37 @@ export function productsFetch(state = initialState, action) {
         products_listing: action.payload.data ? action.payload.data : []
       };
     case productConstants.FETCH_FAILURE:
+      return {
+        ...state,
+        error: action.payload
+      };
+    case productConstants.PURCHASE_PRODUCT_SUCCESS:
+      return {
+        ...state,
+        error: action.payload
+      };
+    case productConstants.PURCHASE_PRODUCT_FAILURE:
+      return {
+        ...state,
+        error: action.payload
+      };
+    default:
+      return state;
+  }
+}
+
+export function userFetch(state = initialUserState, action) {
+  switch (action.type) {
+    case productConstants.FETCH_USER_SUCCESS:
+      return {
+        ...state,
+        user_id: action.payload.user_id,
+        name: action.payload.name,
+        credit: action.payload.credit,
+        purchased_product: action.payload.purchased_product,
+        product_reviews: action.payload.product_reviews
+      };
+    case productConstants.FETCH_USER_FAILURE:
       return {
         ...state,
         error: action.payload

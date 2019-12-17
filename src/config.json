@@ -1,7 +1,9 @@
 {
-  "BASE_URL": "https://3efae8b1.ngrok.io/",
+  "BASE_URL": "https://5c704793.ngrok.io/",
   "API_ENDPOINTS": {
     "FETCH_PRODUCTS": "list-products/",
-    "STORE_PRODUCTS": "store-product/"
+    "STORE_PRODUCTS": "store-product/",
+    "PURCHASE_PRODUCT": "buy-product/",
+    "FETCH_USER": "user/"
   }
 }

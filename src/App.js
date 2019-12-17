@@ -20,6 +20,7 @@ import ReviewProduct from './pages/reviewProduct';
 
 class App extends Component {
   componentDidMount() {
+    this.props.dispatch(productActions.fetchUser());
     this.props.dispatch(productActions.fetchProducts());
   }
 

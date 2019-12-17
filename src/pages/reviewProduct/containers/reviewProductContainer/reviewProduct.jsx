@@ -12,6 +12,7 @@ class ReviewProductContainer extends Component {
 
     this.state = {
       id: props.id,
+      name: props.name,
       user_id: props.user_id,
       review_detail: props.review_detail
     };
@@ -37,33 +38,10 @@ class ReviewProductContainer extends Component {
         <div className="tabs" id="accountSettings">
           <div className="tab-content">
             <form name="accounts_settings" onSubmit={this.reviewProduct} className="profile-form">
-              <Form.Group controlId="user_id">
-                <label>User</label>
-                <Col sm="9">
-                  <input
-                    type="text"
-                    id="user_id"
-                    name="user_id"
-                    className="form-control"
-                    value={this.state.user_id}
-                    onChange={this.handleChange}
-                    required
-                  />
-                </Col>
-              </Form.Group>
-
               <Form.Group controlId="id">
                 <label>Product</label>
                 <Col sm="9">
-                  <input
-                    type="text"
-                    id="id"
-                    name="id"
-                    className="form-control"
-                    value={this.state.id}
-                    onChange={this.handleChange}
-                    required
-                  />
+                  <input type="text" id="id" name="id" className="form-control" value={this.state.name} readOnly />
                 </Col>
               </Form.Group>
 
@@ -71,7 +49,7 @@ class ReviewProductContainer extends Component {
                 <label>Review</label>
                 <Col sm="9">
                   <textarea
-                    rows="4"
+                    rows="5"
                     cols="50"
                     name="review_detail"
                     className="form-control"
@@ -89,7 +67,7 @@ class ReviewProductContainer extends Component {
                 <Col sm="9">
                   <input type="submit" value="Save" className="btn btn-primary btn-lg" />
                   &nbsp;&nbsp;
-                  <Link class="btn btn-primary btn-lg" to="/">
+                  <Link className="btn btn-primary btn-lg" to="/">
                     Cancel
                   </Link>
                 </Col>
@@ -107,11 +85,12 @@ class ReviewProductContainer extends Component {
 }
 
 function mapStateToProps(state) {
-  const { id } = state.UPDATE_PRODUCT;
+  const { id, name } = state.UPDATE_PRODUCT;
   const { user_id, review_detail } = state.REVIEW_PRODUCT;
 
   return {
     id,
+    name,
     user_id,
     review_detail
   };
