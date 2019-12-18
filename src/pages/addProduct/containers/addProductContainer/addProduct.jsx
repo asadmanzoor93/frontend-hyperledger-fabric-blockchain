@@ -171,13 +171,6 @@ class AddProductContainer extends Component {
                 </Col>
               </Form.Group>
 
-              <Form.Group controlId="owner">
-                <label>Owner</label>
-                <Col sm="9">
-                  <Form.Control type="text" name="owner" value={this.state.owner} onChange={this.handleChange} />
-                </Col>
-              </Form.Group>
-
               <Form.Group controlId="submit" sm="md-auto">
                 <label>&nbsp;</label>
                 <Col sm="9">

@@ -11,8 +11,8 @@ class ReviewProductContainer extends Component {
     super(props);
 
     this.state = {
-      id: props.id,
-      name: props.name,
+      product_id: props.id,
+      product_name: props.name,
       user_id: props.user_id,
       review_detail: props.review_detail
     };
@@ -41,7 +41,14 @@ class ReviewProductContainer extends Component {
               <Form.Group controlId="id">
                 <label>Product</label>
                 <Col sm="9">
-                  <input type="text" id="id" name="id" className="form-control" value={this.state.name} readOnly />
+                  <input
+                    type="text"
+                    id="id"
+                    name="id"
+                    className="form-control"
+                    value={this.state.product_name}
+                    readOnly
+                  />
                 </Col>
               </Form.Group>
 

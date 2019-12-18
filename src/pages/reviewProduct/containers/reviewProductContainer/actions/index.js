@@ -7,7 +7,7 @@ import { history } from '../../../../../helpers';
 const reviewProduct = (payload) => {
   return (dispatch) => {
     productService
-      .updateProduct(payload)
+      .reviewProduct(payload)
       .then((productData) => {
         dispatch({
           type: reviewProductConstants.ADD_REVIEW,

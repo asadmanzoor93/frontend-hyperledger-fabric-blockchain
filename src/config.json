@@ -4,6 +4,7 @@
     "FETCH_PRODUCTS": "list-products/",
     "STORE_PRODUCTS": "store-product/",
     "PURCHASE_PRODUCT": "buy-product/",
-    "FETCH_USER": "user/"
+    "REVIEW_PRODUCT": "review-product/",
+    "FETCH_USER": "get-user/"
   }
 }

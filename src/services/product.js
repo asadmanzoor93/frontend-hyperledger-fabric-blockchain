@@ -4,6 +4,7 @@ const axios = require('axios');
 
 export const productService = {
   fetchProducts,
+  reviewProduct,
   fetchUser,
   addProduct,
   updateProduct,
@@ -23,8 +24,8 @@ function fetchProducts() {
 }
 
 function fetchUser() {
-  // const url = config.BASE_URL + config.API_ENDPOINTS.FETCH_USER;
-  const url = 'http://5ddf59224a658b0014c48899.mockapi.io/user';
+  const url = config.BASE_URL + config.API_ENDPOINTS.FETCH_USER;
+  // const url = 'http://5ddf59224a658b0014c48899.mockapi.io/get-user';
   const requestOptions = {
     method: 'GET',
     headers: {
@@ -98,6 +99,29 @@ function purchaseProduct(product_id, user_id) {
   let bodyFormData = new FormData();
   bodyFormData.set('product_id', product_id);
   bodyFormData.set('user_id', user_id);
+
+  const requestOptions = {
+    method: 'POST',
+    withCredentials: false,
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'X-Requested-With': 'XMLHttpRequest'
+    },
+    data: bodyFormData,
+    url
+  };
+  return axios(requestOptions);
+}
+
+function reviewProduct(productData) {
+  const { product_id, product_name, user_id, review_detail } = productData;
+  const url = config.BASE_URL + config.API_ENDPOINTS.REVIEW_PRODUCT;
+
+  let bodyFormData = new FormData();
+  bodyFormData.set('product_id', product_id);
+  bodyFormData.set('product_name', product_name);
+  bodyFormData.set('user_id', user_id);
+  bodyFormData.set('review_detail', review_detail);
 
   const requestOptions = {
     method: 'POST',
