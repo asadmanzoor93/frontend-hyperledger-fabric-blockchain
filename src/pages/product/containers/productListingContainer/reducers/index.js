@@ -19,8 +19,8 @@ export function productsFetch(state = initialState, action) {
       let maximum_id = 0;
       if (action.payload.data) {
         action.payload.data.forEach((product) => {
-          if (product.Record.ID > maximum_id) {
-            maximum_id = product.Record.ID;
+          if (product.Record.id > maximum_id) {
+            maximum_id = product.Record.id;
           }
         });
       }

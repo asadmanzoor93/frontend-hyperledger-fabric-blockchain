@@ -24,8 +24,8 @@ function fetchProducts() {
 }
 
 function fetchUser() {
-  const url = config.BASE_URL + config.API_ENDPOINTS.FETCH_USER;
-  // const url = 'http://5ddf59224a658b0014c48899.mockapi.io/get-user';
+  // const url = config.BASE_URL + config.API_ENDPOINTS.FETCH_USER + 'test1@gmail.com';
+  const url = 'http://5ddf59224a658b0014c48899.mockapi.io/get-user';
   const requestOptions = {
     method: 'GET',
     headers: {
@@ -81,7 +81,7 @@ function updateProduct(product) {
 
   const requestOptions = {
     method: 'POST',
-    withCredentials: true,
+    withCredentials: false,
     headers: {
       Accept: '*/*',
       'Content-Type': 'application/x-www-form-urlencoded',

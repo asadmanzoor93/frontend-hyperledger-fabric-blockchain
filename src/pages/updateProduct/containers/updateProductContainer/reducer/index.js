@@ -25,7 +25,7 @@ export function updateProduct(state = initialState, action) {
 
       return {
         ...state,
-        id: product.Record.ID ? product.Record.ID : '',
+        id: product.Record.id ? product.Record.id : '',
         name: product.Record.name ? product.Record.name : '',
         description: product.Record.description ? product.Record.description : '',
         image: product.Record.image ? product.Record.image : '',

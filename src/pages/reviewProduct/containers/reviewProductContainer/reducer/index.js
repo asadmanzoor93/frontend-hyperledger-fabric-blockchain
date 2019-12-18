@@ -16,7 +16,7 @@ export function reviewProduct(state = initialState, action) {
     case reviewProductConstants.ADD_REVIEW:
       return {
         ...state,
-        id: action.payload.ID ? action.payload.ID : '',
+        id: action.payload.id ? action.payload.id : '',
         user_id: action.payload.user_id ? action.payload.user_id : '',
         review_detail: action.payload.review_detail ? action.payload.review_detail : ''
       };

@@ -47,7 +47,7 @@ const ProductListingContainer = (props) => {
                     onClick={() =>
                       props.dispatch({
                         type: updateProductConstants.EDIT_PRODUCT,
-                        id: product.Record.ID,
+                        id: product.Record.id,
                         product: product
                       })
                     }
@@ -56,7 +56,7 @@ const ProductListingContainer = (props) => {
                   </Link>
                   <span
                     className="btn btn-success btn-lg"
-                    onClick={() => props.dispatch(productActions.purchaseProduct(product.Record.ID, user_id))}
+                    onClick={() => props.dispatch(productActions.purchaseProduct(product.Record.id, user_id))}
                   >
                     Purchase
                   </span>
@@ -66,7 +66,7 @@ const ProductListingContainer = (props) => {
                     onClick={() =>
                       props.dispatch({
                         type: updateProductConstants.EDIT_PRODUCT,
-                        id: product.Record.ID,
+                        id: product.Record.id,
                         product: product
                       })
                     }
