@@ -66,7 +66,7 @@ function addProduct(product) {
 
 function updateProduct(product) {
   const url = config.BASE_URL + config.API_ENDPOINTS.STORE_PRODUCTS;
-  const { id, name, description, image, color, docType, make, price, quantity } = product;
+  let { id, name, description, image, color, docType, make, price, quantity } = product;
 
   let bodyFormData = new FormData();
   bodyFormData.set('id', id);
