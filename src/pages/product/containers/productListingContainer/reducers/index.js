@@ -6,7 +6,7 @@ const initialState = {
 };
 
 const initialUserState = {
-  user_id: 'ASAD12',
+  user_id: 'f.sh@ymail.com',
   name: 'Asad Manzoor',
   credit: 2000,
   purchased_product: [],

@@ -14,7 +14,7 @@ class ReviewProductContainer extends Component {
       product_id: props.id,
       product_name: props.name,
       user_id: props.user_id,
-      review_detail: props.review_detail
+      description: props.description
     };
   }
 
@@ -52,19 +52,19 @@ class ReviewProductContainer extends Component {
                 </Col>
               </Form.Group>
 
-              <Form.Group controlId="review_detail">
+              <Form.Group controlId="description">
                 <label>Review</label>
                 <Col sm="9">
                   <textarea
                     rows="5"
                     cols="50"
-                    name="review_detail"
+                    name="description"
                     className="form-control"
-                    value={this.state.review_detail}
+                    value={this.state.description}
                     onChange={this.handleChange}
                     required
                   >
-                    {this.state.review_detail}
+                    {this.state.description}
                   </textarea>
                 </Col>
               </Form.Group>
@@ -93,13 +93,14 @@ class ReviewProductContainer extends Component {
 
 function mapStateToProps(state) {
   const { id, name } = state.UPDATE_PRODUCT;
-  const { user_id, review_detail } = state.REVIEW_PRODUCT;
+  const { description } = state.REVIEW_PRODUCT;
+  const { user_id } = state.USER;
 
   return {
     id,
     name,
     user_id,
-    review_detail
+    description
   };
 }
 

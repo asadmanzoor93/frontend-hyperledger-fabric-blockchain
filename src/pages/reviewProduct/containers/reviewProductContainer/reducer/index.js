@@ -3,7 +3,7 @@ import { reviewProductConstants } from '../constants';
 const initialState = {
   id: '',
   user_id: '',
-  review_detail: ''
+  description: ''
 };
 
 export function reviewProduct(state = initialState, action) {
@@ -18,7 +18,7 @@ export function reviewProduct(state = initialState, action) {
         ...state,
         id: action.payload.id ? action.payload.id : '',
         user_id: action.payload.user_id ? action.payload.user_id : '',
-        review_detail: action.payload.review_detail ? action.payload.review_detail : ''
+        description: action.payload.description ? action.payload.description : ''
       };
     default:
       return state;

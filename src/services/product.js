@@ -114,14 +114,15 @@ function purchaseProduct(product_id, user_id) {
 }
 
 function reviewProduct(productData) {
-  const { product_id, product_name, user_id, review_detail } = productData;
+  let { product_id, user_id, description } = productData;
   const url = config.BASE_URL + config.API_ENDPOINTS.REVIEW_PRODUCT;
 
+  product_id = product_id.replace('ID', '');
+
   let bodyFormData = new FormData();
-  bodyFormData.set('product_id', product_id);
-  bodyFormData.set('product_name', product_name);
+  bodyFormData.set('product_id', 'ID' + product_id);
   bodyFormData.set('user_id', user_id);
-  bodyFormData.set('review_detail', review_detail);
+  bodyFormData.set('description', description);
 
   const requestOptions = {
     method: 'POST',
