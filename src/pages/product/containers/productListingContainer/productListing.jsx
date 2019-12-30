@@ -9,8 +9,7 @@ import { updateProductConstants } from '../../../updateProduct/containers/update
 import { productActions } from './actions';
 
 const ProductListingContainer = (props) => {
-  const { products_listing, user_id, puchased_products_ids, dispatch } = props;
-  dispatch(productActions.fetchProducts());
+  const { products_listing, user_id, puchased_products_ids } = props;
   const products = products_listing.map((product, index) => {
     let purchased = puchased_products_ids.indexOf(product.Record.id) > -1;
     return (
@@ -51,8 +50,9 @@ const ProductListingContainer = (props) => {
                       })
                     }
                   >
-                    Review
+                    Review Product
                   </Link>
+                  <br />
                   <br />
                   <span style={{ display: purchased ? '' : 'none' }} className="btn btn-success btn-lg">
                     Already Purchased
@@ -65,6 +65,7 @@ const ProductListingContainer = (props) => {
                     Purchase Product
                   </span>
                   <br />
+                  <br />
                   <Link
                     to="/update_product"
                     className="btn btn-success btn-lg"
@@ -76,13 +77,25 @@ const ProductListingContainer = (props) => {
                       })
                     }
                   >
-                    Edit
+                    Update Product
                   </Link>
-                  <p>
-                    <img className=" img-fluid" src={product.Record.image} alt="product" />
-                  </p>
+
+                  <br />
+                  <br />
+                  <Link
+                    to="/detail_product"
+                    className="btn btn-success btn-lg"
+                    onClick={() =>
+                      props.dispatch({
+                        type: updateProductConstants.EDIT_PRODUCT,
+                        id: product.Record.id,
+                        product: product
+                      })
+                    }
+                  >
+                    Detail Information
+                  </Link>
                   <h4 className="card-title">{product.name}</h4>
-                  <p className="card-text">{product.Record.description}</p>
                 </div>
               </div>
             </div>

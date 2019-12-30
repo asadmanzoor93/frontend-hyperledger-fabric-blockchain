@@ -7,7 +7,7 @@ import { history } from '../../../../../helpers';
 const updateProduct = (payload) => {
   return (dispatch) => {
     store.addNotification({
-      title: 'Product Update',
+      title: '',
       message: 'Product update in progress',
       type: 'info',
       insert: 'top',
@@ -27,6 +27,8 @@ const updateProduct = (payload) => {
           type: updateProductConstants.UPDATE_PRODUCT,
           payload: productData.data
         });
+
+        dispatch(productService.fetchProducts());
 
         history.push('/');
         store.addNotification({

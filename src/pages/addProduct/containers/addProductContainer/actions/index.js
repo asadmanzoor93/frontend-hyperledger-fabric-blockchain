@@ -6,6 +6,20 @@ import { history } from '../../../../../helpers';
 
 const addProduct = (payload) => {
   return (dispatch) => {
+    store.addNotification({
+      title: '',
+      message: 'New Product Added in progress',
+      type: 'info',
+      insert: 'top',
+      container: 'top-right',
+      animationIn: ['animated', 'fadeIn'],
+      animationOut: ['animated', 'fadeOut'],
+      dismiss: {
+        duration: 3000,
+        onScreen: true
+      }
+    });
+
     productService
       .addProduct(payload)
       .then((productData) => {
@@ -13,6 +27,8 @@ const addProduct = (payload) => {
           type: addProductConstants.ADD_PRODUCT,
           payload: productData.data
         });
+
+        dispatch(productService.fetchProducts());
         history.push('/');
         store.addNotification({
           title: 'New Product Addition',

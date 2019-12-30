@@ -17,6 +17,7 @@ import Footer from './components/footer/index';
 import { history } from './helpers';
 import { productActions } from './pages/product/containers/productListingContainer/actions';
 import ReviewProduct from './pages/reviewProduct';
+import { DetailProduct } from './pages/detailProduct';
 
 class App extends Component {
   componentDidMount() {
@@ -39,6 +40,7 @@ class App extends Component {
                   <Route path="/add_product" component={withRouter(AddProduct)} />
                   <Route path="/update_product" component={withRouter(UpdateProduct)} />
                   <Route path="/review_product" component={withRouter(ReviewProduct)} />
+                  <Route path="/detail_product" component={withRouter(DetailProduct)} />
                 </main>
               </Col>
             </Row>

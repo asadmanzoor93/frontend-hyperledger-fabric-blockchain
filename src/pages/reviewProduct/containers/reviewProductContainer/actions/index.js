@@ -7,7 +7,7 @@ import { history } from '../../../../../helpers';
 const reviewProduct = (payload) => {
   return (dispatch) => {
     store.addNotification({
-      title: 'Product Review',
+      title: '',
       message: 'Product review in progress',
       type: 'info',
       insert: 'top',

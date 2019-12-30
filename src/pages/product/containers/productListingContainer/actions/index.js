@@ -46,6 +46,20 @@ function fetchUser() {
 
 function fetchProducts() {
   return (dispatch) => {
+    store.addNotification({
+      title: '',
+      message: 'Fetching Products in progress',
+      type: 'info',
+      insert: 'top',
+      container: 'top-right',
+      animationIn: ['animated', 'fadeIn'],
+      animationOut: ['animated', 'fadeOut'],
+      dismiss: {
+        duration: 3000,
+        onScreen: true
+      }
+    });
+
     productService
       .fetchProducts()
       .then((products) => {
@@ -83,7 +97,7 @@ function fetchProducts() {
 function purchaseProduct(product_id, user_id) {
   return (dispatch) => {
     store.addNotification({
-      title: 'Product Purchase',
+      title: '',
       message: 'Product purchase in progress',
       type: 'info',
       insert: 'top',
