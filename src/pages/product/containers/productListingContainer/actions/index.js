@@ -16,7 +16,7 @@ function fetchUser() {
         Promise.resolve(
           dispatch({
             type: productConstants.FETCH_USER_SUCCESS,
-            payload: user.data[0]
+            payload: user.data
           })
         );
       })
@@ -82,6 +82,20 @@ function fetchProducts() {
 
 function purchaseProduct(product_id, user_id) {
   return (dispatch) => {
+    store.addNotification({
+      title: 'Product Purchase',
+      message: 'Product purchase in progress',
+      type: 'info',
+      insert: 'top',
+      container: 'top-right',
+      animationIn: ['animated', 'fadeIn'],
+      animationOut: ['animated', 'fadeOut'],
+      dismiss: {
+        duration: 3000,
+        onScreen: true
+      }
+    });
+
     productService
       .purchaseProduct(product_id, user_id)
       .then((products) => {

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link, Redirect } from 'react-router-dom';
 import { Col, Form } from 'react-bootstrap';
 import '../../index.scss';
 
 import { reviewProductActions } from './actions';
-import { Link } from 'react-router-dom';
 
 class ReviewProductContainer extends Component {
   constructor(props) {
@@ -14,7 +14,8 @@ class ReviewProductContainer extends Component {
       product_id: props.id,
       product_name: props.name,
       user_id: props.user_id,
-      description: props.description
+      description: props.description,
+      token: props.token
     };
   }
 
@@ -31,7 +32,11 @@ class ReviewProductContainer extends Component {
   };
 
   render() {
-    const { match } = this.props;
+    const { match, id } = this.props;
+    if (!id) {
+      return <Redirect to="/" />;
+    }
+
     return (
       <Col md={12}>
         <h1>{match}</h1>
@@ -94,13 +99,22 @@ class ReviewProductContainer extends Component {
 function mapStateToProps(state) {
   const { id, name } = state.UPDATE_PRODUCT;
   const { description } = state.REVIEW_PRODUCT;
-  const { user_id } = state.USER;
+  const { user_id, puchasedProducts } = state.USER;
+
+  let token;
+
+  puchasedProducts.forEach((puchased_product) => {
+    if (id === puchased_product.productId) {
+      token = puchased_product.reviewToken;
+    }
+  });
 
   return {
     id,
     name,
     user_id,
-    description
+    description,
+    token
   };
 }
 

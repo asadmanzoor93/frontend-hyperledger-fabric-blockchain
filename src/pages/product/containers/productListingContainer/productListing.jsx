@@ -9,8 +9,10 @@ import { updateProductConstants } from '../../../updateProduct/containers/update
 import { productActions } from './actions';
 
 const ProductListingContainer = (props) => {
-  const { products_listing, user_id } = props;
+  const { products_listing, user_id, puchased_products_ids, dispatch } = props;
+  dispatch(productActions.fetchProducts());
   const products = products_listing.map((product, index) => {
+    let purchased = puchased_products_ids.indexOf(product.Record.id) > -1;
     return (
       <div key={index} className="col-xs-12 col-sm-6 col-md-4">
         <div className="image-flip">
@@ -24,11 +26,7 @@ const ProductListingContainer = (props) => {
                   <h4 className="card-title">{product.name}</h4>
                   <p className="card-text">{product.Record.description}</p>
                   <p className="card-text">
-                    <strong>Color</strong>: {product.Record.color}
-                    <br />
                     <strong>Product Type</strong>: {product.Record.docType}
-                    <br />
-                    <strong>Make</strong>: {product.Record.make}
                     <br />
                     <strong>Price</strong>: {product.Record.price}
                     <br />
@@ -42,6 +40,7 @@ const ProductListingContainer = (props) => {
               <div className="card">
                 <div className="card-body text-center">
                   <Link
+                    style={{ display: purchased ? '' : 'none' }}
                     to="/review_product"
                     className="btn btn-success btn-lg"
                     onClick={() =>
@@ -54,12 +53,18 @@ const ProductListingContainer = (props) => {
                   >
                     Review
                   </Link>
+                  <br />
+                  <span style={{ display: purchased ? '' : 'none' }} className="btn btn-success btn-lg">
+                    Already Purchased
+                  </span>
                   <span
+                    style={{ display: purchased ? 'none' : '' }}
                     className="btn btn-success btn-lg"
                     onClick={() => props.dispatch(productActions.purchaseProduct(product.Record.id, user_id))}
                   >
-                    Purchase
+                    Purchase Product
                   </span>
+                  <br />
                   <Link
                     to="/update_product"
                     className="btn btn-success btn-lg"
@@ -106,11 +111,12 @@ const ProductListingContainer = (props) => {
 };
 
 function mapStateToProps(state) {
-  const { user_id } = state.USER;
+  const { user_id, puchased_products_ids } = state.USER;
   const { products_listing } = state.PRODUCTS;
   return {
     user_id,
-    products_listing
+    products_listing,
+    puchased_products_ids
   };
 }
 

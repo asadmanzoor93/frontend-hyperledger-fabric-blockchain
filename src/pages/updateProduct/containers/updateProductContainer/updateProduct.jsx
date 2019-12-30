@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { Col, Form } from 'react-bootstrap';
 
 import '../../index.scss';
@@ -57,7 +57,11 @@ class UpdateProductContainer extends Component {
   };
 
   render() {
-    const { match } = this.props;
+    const { match, id } = this.props;
+    if (!id) {
+      return <Redirect to="/" />;
+    }
+
     return (
       <Col md={12}>
         <h1>{match}</h1>
@@ -156,20 +160,6 @@ class UpdateProductContainer extends Component {
                     </label>
                   </div>
                   <span className="input-info">You can attach gif, jpg, png, with a maximum size of 5MB</span>
-                </Col>
-              </Form.Group>
-
-              <Form.Group controlId="color">
-                <label>Color</label>
-                <Col sm="9">
-                  <Form.Control type="text" name="color" value={this.state.color} onChange={this.handleChange} />
-                </Col>
-              </Form.Group>
-
-              <Form.Group controlId="make">
-                <label>Make</label>
-                <Col sm="9">
-                  <Form.Control type="text" name="make" value={this.state.make} onChange={this.handleChange} />
                 </Col>
               </Form.Group>
 

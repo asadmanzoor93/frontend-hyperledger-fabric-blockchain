@@ -1,10 +1,10 @@
 {
-  "BASE_URL": "http://104.154.139.101:8080/",
+  "BASE_URL": "https://ddcc78e1.ngrok.io/",
   "API_ENDPOINTS": {
     "FETCH_PRODUCTS": "list-products/",
-    "STORE_PRODUCTS": "store-product/",
-    "PURCHASE_PRODUCT": "buy-product/",
-    "REVIEW_PRODUCT": "review-product/",
+    "STORE_PRODUCTS": "store-product",
+    "PURCHASE_PRODUCT": "buy-product",
+    "REVIEW_PRODUCT": "review-product",
     "FETCH_USER": "get-user/"
   }
 }

@@ -12,7 +12,6 @@ export const productService = {
 };
 function fetchProducts() {
   const url = config.BASE_URL + config.API_ENDPOINTS.FETCH_PRODUCTS;
-  // const url = 'http://5ddf59224a658b0014c48899.mockapi.io/products';
   const requestOptions = {
     method: 'GET',
     headers: {
@@ -24,8 +23,7 @@ function fetchProducts() {
 }
 
 function fetchUser() {
-  // const url = config.BASE_URL + config.API_ENDPOINTS.FETCH_USER + 'test1@gmail.com';
-  const url = 'http://5ddf59224a658b0014c48899.mockapi.io/get-user';
+  const url = config.BASE_URL + config.API_ENDPOINTS.FETCH_USER + 'f.sh@ymail.com';
   const requestOptions = {
     method: 'GET',
     headers: {
@@ -114,7 +112,7 @@ function purchaseProduct(product_id, user_id) {
 }
 
 function reviewProduct(productData) {
-  let { product_id, user_id, description } = productData;
+  let { product_id, user_id, description, token } = productData;
   const url = config.BASE_URL + config.API_ENDPOINTS.REVIEW_PRODUCT;
 
   product_id = product_id.replace('ID', '');
@@ -123,6 +121,7 @@ function reviewProduct(productData) {
   bodyFormData.set('product_id', 'ID' + product_id);
   bodyFormData.set('user_id', user_id);
   bodyFormData.set('description', description);
+  bodyFormData.set('token', token);
 
   const requestOptions = {
     method: 'POST',

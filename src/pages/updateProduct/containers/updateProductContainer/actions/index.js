@@ -6,6 +6,20 @@ import { history } from '../../../../../helpers';
 
 const updateProduct = (payload) => {
   return (dispatch) => {
+    store.addNotification({
+      title: 'Product Update',
+      message: 'Product update in progress',
+      type: 'info',
+      insert: 'top',
+      container: 'top-right',
+      animationIn: ['animated', 'fadeIn'],
+      animationOut: ['animated', 'fadeOut'],
+      dismiss: {
+        duration: 3000,
+        onScreen: true
+      }
+    });
+
     productService
       .updateProduct(payload)
       .then((productData) => {

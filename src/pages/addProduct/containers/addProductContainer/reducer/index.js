@@ -5,10 +5,10 @@ const initialState = {
   name: '',
   description: '',
   image: '',
-  color: '',
+  color: 'white',
   docType: '',
   quantity: 0,
-  make: '',
+  make: '2020',
   owner: '',
   price: 0
 };

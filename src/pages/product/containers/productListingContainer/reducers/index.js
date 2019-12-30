@@ -7,10 +7,12 @@ const initialState = {
 
 const initialUserState = {
   user_id: 'f.sh@ymail.com',
-  name: 'Asad Manzoor',
-  credit: 2000,
-  purchased_product: [],
-  product_reviews: []
+  email: 'f.sh@ymail.com',
+  firstName: 'Asad',
+  lastName: 'Manzoor',
+  balance: 35000,
+  puchased_products_ids: [],
+  puchasedProducts: []
 };
 
 export function productsFetch(state = initialState, action) {
@@ -55,13 +57,20 @@ export function productsFetch(state = initialState, action) {
 export function userFetch(state = initialUserState, action) {
   switch (action.type) {
     case productConstants.FETCH_USER_SUCCESS:
+      let puchased_products_ids = [];
+      action.payload.data.puchasedProducts.forEach((puchased_product) => {
+        puchased_products_ids.push(puchased_product.productId);
+      });
+
       return {
         ...state,
-        user_id: action.payload.user_id,
-        name: action.payload.name,
-        credit: action.payload.credit,
-        purchased_product: action.payload.purchased_product,
-        product_reviews: action.payload.product_reviews
+        user_id: action.payload.data.id,
+        email: action.payload.data.email,
+        firstName: action.payload.data.firstName,
+        lastName: action.payload.data.lastName,
+        balance: action.payload.data.balance,
+        puchased_products_ids: puchased_products_ids,
+        puchasedProducts: action.payload.data.puchasedProducts
       };
     case productConstants.FETCH_USER_FAILURE:
       return {
