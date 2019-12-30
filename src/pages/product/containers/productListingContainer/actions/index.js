@@ -119,6 +119,8 @@ function purchaseProduct(product_id, user_id) {
             payload: products.data
           })
         );
+
+        dispatch(productService.fetchProducts());
         store.addNotification({
           title: 'Product Purchase',
           message: 'Product Purchased Successfully',

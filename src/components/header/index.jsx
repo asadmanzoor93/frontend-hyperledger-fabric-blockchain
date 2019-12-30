@@ -10,7 +10,7 @@ const Header = () => {
         <Navbar.Brand href="/dashboard">
           <img src={SiteLogo} alt="site logoo" className="logo" height="160" width="450" />
         </Navbar.Brand>
-        <h5 className="section-title h1">Hyperledger Fabric Blockchain Project</h5>
+        <h5 className="section-title h1">Hyperledger Fabric Blockchain</h5>
       </Navbar>
     </div>
   );
