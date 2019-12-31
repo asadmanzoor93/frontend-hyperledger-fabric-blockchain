@@ -8,7 +8,7 @@ const Footer = () => {
       <Container fluid>
         <Row>
           <Col className="text-center">
-            <span>Powered by Asad Manzoor</span>
+            <span>Powered by ITU Lahore</span>
           </Col>
         </Row>
       </Container>
