@@ -6,7 +6,6 @@ import { Col, Form } from 'react-bootstrap';
 import './index.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as Icons from '@fortawesome/free-solid-svg-icons';
-import { UpdateProductContainer } from '../updateProduct/containers/updateProductContainer/updateProduct';
 
 class DetailProduct extends Component {
   constructor(props) {
@@ -22,7 +21,8 @@ class DetailProduct extends Component {
       quantity: props.quantity,
       make: props.make,
       owner: props.owner,
-      price: props.price
+      price: props.price,
+      reviews: props.reviews
     };
   }
 
@@ -30,6 +30,23 @@ class DetailProduct extends Component {
     if (!this.state.id) {
       return <Redirect to="/" />;
     }
+
+    const reviews_section = this.state.reviews.map((product, index) => {
+      return (
+        <div key={index}>
+          <Form.Group controlId="description">
+            <label style={{ paddingLeft: '16px' }}>
+              <strong>User : {product.userId}</strong>
+            </label>
+            <Col sm="9">
+              <textarea rows="4" cols="50" name="description" className="form-control" readOnly value={product.review}>
+                {product.review}
+              </textarea>
+            </Col>
+          </Form.Group>
+        </div>
+      );
+    });
 
     return (
       <div>
@@ -41,7 +58,7 @@ class DetailProduct extends Component {
           <div className="container">
             <h5 className="section-title h1">Product Information</h5>
             <Col md={12}>
-              <h1>{this.state.name}</h1>
+              <h1 style={{ paddingLeft: '440px' }}>{this.state.name}</h1>
               <div className="tabs" id="accountSettings">
                 <div className="tab-content">
                   <Form.Group controlId="name">
@@ -136,13 +153,24 @@ class DetailProduct extends Component {
             </Col>
           </div>
         </section>
+
+        <section id="team2" className="pb-5">
+          <div className="container">
+            <h5 className="section-title h1">Product Reviews</h5>
+            <Col md={12}>
+              <div className="tabs" id="accountSettings2">
+                <div className="tab-content">{reviews_section}</div>
+              </div>
+            </Col>
+          </div>
+        </section>
       </div>
     );
   }
 }
 
 function mapStateToProps(state) {
-  const { id, name, description, image, color, docType, make, owner, price, quantity } = state.UPDATE_PRODUCT;
+  const { id, name, description, image, color, docType, make, owner, price, quantity, reviews } = state.UPDATE_PRODUCT;
 
   return {
     id,
@@ -154,7 +182,8 @@ function mapStateToProps(state) {
     make,
     owner,
     price,
-    quantity
+    quantity,
+    reviews
   };
 }
 

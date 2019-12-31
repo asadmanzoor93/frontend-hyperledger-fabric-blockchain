@@ -34,7 +34,8 @@ export function updateProduct(state = initialState, action) {
         quantity: product.Record.quantity ? product.Record.quantity : 0,
         make: product.Record.make ? product.Record.make : '',
         owner: product.Record.owner ? product.Record.owner : '',
-        price: product.Record.price ? product.Record.price : 0
+        price: product.Record.price ? product.Record.price : 0,
+        reviews: product.Record.reviews ? product.Record.reviews : []
       };
     default:
       return state;
