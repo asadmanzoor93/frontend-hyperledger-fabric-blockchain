@@ -120,7 +120,7 @@ function purchaseProduct(product_id, user_id) {
           })
         );
 
-        dispatch(productService.fetchProducts());
+        // dispatch(productService.fetchProducts());
         store.addNotification({
           title: 'Product Purchase',
           message: 'Product Purchased Successfully',

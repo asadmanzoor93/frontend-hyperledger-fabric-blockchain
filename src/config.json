@@ -1,5 +1,5 @@
 {
-  "BASE_URL": "https://368732e4.ngrok.io/",
+  "BASE_URL": "http://localhost:8080/",
   "API_ENDPOINTS": {
     "FETCH_PRODUCTS": "list-products/",
     "STORE_PRODUCTS": "store-product",

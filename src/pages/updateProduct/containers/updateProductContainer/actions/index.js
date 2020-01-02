@@ -28,7 +28,7 @@ const updateProduct = (payload) => {
           payload: productData.data
         });
 
-        dispatch(productService.fetchProducts());
+        // dispatch(productService.fetchProducts());
 
         history.push('/');
         store.addNotification({
