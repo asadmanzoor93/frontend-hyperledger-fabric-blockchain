@@ -9,10 +9,12 @@ import { updateProductConstants } from '../../../updateProduct/containers/update
 import { productActions } from './actions';
 
 const ProductListingContainer = (props) => {
-  const { products_listing, user_id, puchased_products_ids } = props;
+  const { products_listing, user_id, puchased_products_ids, reviewed_products_ids } = props;
   const products = products_listing.map((product, index) => {
     if (product.Key !== 'ID0' && product.Key !== 'ID1') {
       let purchased = puchased_products_ids.indexOf(product.Record.id) > -1;
+      let reviewed = reviewed_products_ids.indexOf(product.Record.id) > -1;
+
       return (
         <div key={index} className="col-xs-12 col-sm-6 col-md-4">
           <div className="image-flip">
@@ -40,7 +42,7 @@ const ProductListingContainer = (props) => {
                 <div className="card">
                   <div className="card-body text-center">
                     <Link
-                      style={{ display: purchased ? '' : 'none' }}
+                      style={{ display: purchased && !reviewed ? '' : 'none' }}
                       to="/review_product"
                       className="btn btn-success btn-lg"
                       onClick={() =>
@@ -53,9 +55,12 @@ const ProductListingContainer = (props) => {
                     >
                       Review Product
                     </Link>
+                    <span style={{ display: reviewed ? '' : 'none' }} className="btn-danger btn-lg">
+                      Already Reviewed
+                    </span>
                     <br />
                     <br />
-                    <span style={{ display: purchased ? '' : 'none' }} className="btn btn-success btn-lg">
+                    <span style={{ display: purchased ? '' : 'none' }} className="btn-success btn-lg">
                       Already Purchased
                     </span>
                     <span
@@ -85,7 +90,7 @@ const ProductListingContainer = (props) => {
                     <br />
                     <Link
                       to="/detail_product"
-                      className="btn btn-success btn-lg"
+                      className="btn btn-info btn-lg"
                       onClick={() =>
                         props.dispatch({
                           type: updateProductConstants.EDIT_PRODUCT,
@@ -129,11 +134,12 @@ const ProductListingContainer = (props) => {
 
 function mapStateToProps(state) {
   const { user_id, puchased_products_ids } = state.USER;
-  const { products_listing } = state.PRODUCTS;
+  const { products_listing, reviewed_products_ids } = state.PRODUCTS;
   return {
     user_id,
     products_listing,
-    puchased_products_ids
+    puchased_products_ids,
+    reviewed_products_ids
   };
 }
 

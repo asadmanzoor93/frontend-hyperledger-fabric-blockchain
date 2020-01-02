@@ -2,7 +2,8 @@ import { productConstants } from '../constants';
 
 const initialState = {
   max_id: 0,
-  products_listing: []
+  products_listing: [],
+  reviewed_products_ids: []
 };
 
 const initialUserState = {
@@ -18,6 +19,7 @@ const initialUserState = {
 export function productsFetch(state = initialState, action) {
   switch (action.type) {
     case productConstants.FETCH_SUCCESS:
+      let reviewed_ids = [];
       let maximum_id = 3;
       if (action.payload.data) {
         action.payload.data.forEach((product) => {
@@ -26,13 +28,19 @@ export function productsFetch(state = initialState, action) {
           if (product_id > maximum_id) {
             maximum_id = product_id;
           }
+          product.Record.reviews.forEach((review) => {
+            if (review.userId === initialUserState.user_id) {
+              reviewed_ids.push(product.Record.id);
+            }
+          });
         });
       }
 
       return {
         ...state,
         max_id: parseInt(maximum_id) + 1,
-        products_listing: action.payload.data ? action.payload.data : []
+        products_listing: action.payload.data ? action.payload.data : [],
+        reviewed_products_ids: reviewed_ids
       };
     case productConstants.FETCH_FAILURE:
       return {
