@@ -18,7 +18,7 @@ const initialUserState = {
 export function productsFetch(state = initialState, action) {
   switch (action.type) {
     case productConstants.FETCH_SUCCESS:
-      let maximum_id = 0;
+      let maximum_id = 3;
       if (action.payload.data) {
         action.payload.data.forEach((product) => {
           let product_id = product.Record.id.replace('ID', '');
