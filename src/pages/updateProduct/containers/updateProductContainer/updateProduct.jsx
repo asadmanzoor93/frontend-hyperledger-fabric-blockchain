@@ -159,7 +159,7 @@ class UpdateProductContainer extends Component {
                       Drop file here or click to uplaod
                     </label>
                   </div>
-                  <span className="input-info">You can attach gif, jpg, png, with a maximum size of 5MB</span>
+                  <span className="input-info">You can attach gif, jpg, png, with a maximum size of 1MB</span>
                 </Col>
               </Form.Group>
 

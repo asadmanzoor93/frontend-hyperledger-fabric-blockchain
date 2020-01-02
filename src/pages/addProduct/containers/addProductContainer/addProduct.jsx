@@ -153,21 +153,7 @@ class AddProductContainer extends Component {
                       Drop file here or click to uplaod
                     </label>
                   </div>
-                  <span className="input-info">You can attach gif, jpg, png, with a maximum size of 5MB</span>
-                </Col>
-              </Form.Group>
-
-              <Form.Group controlId="color">
-                <label>Color</label>
-                <Col sm="9">
-                  <Form.Control type="text" name="color" value={this.state.color} onChange={this.handleChange} />
-                </Col>
-              </Form.Group>
-
-              <Form.Group controlId="make">
-                <label>Make</label>
-                <Col sm="9">
-                  <Form.Control type="text" name="make" value={this.state.make} onChange={this.handleChange} />
+                  <span className="input-info">You can attach gif, jpg, png, with a maximum size of 1MB</span>
                 </Col>
               </Form.Group>
 
