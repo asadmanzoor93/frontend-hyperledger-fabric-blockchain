@@ -1,6 +1,6 @@
-# Ethereum Blockchain
+# Hyperledger Blockchain
 
-Frontend Implementation of Ethereum Blockchain
+Frontend Implementation of Hyperledger Blockchain
 
 
 ### Supported By:
@@ -31,4 +31,3 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 ## Learn More
 
 To learn React, check out the [React documentation](https://reactjs.org/).
-# Frontend Implementation of Ethereum Blockchain
